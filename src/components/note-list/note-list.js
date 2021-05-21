@@ -1,5 +1,6 @@
 import React from 'react';
-import NoteListItem from '../note-list-item/note-list-item'
+import NoteListItem from '../note-list-item/note-list-item';
+import './note-list.css'
 
 const NoteList = () => {
   return (

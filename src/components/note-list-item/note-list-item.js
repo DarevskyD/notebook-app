@@ -1,4 +1,5 @@
 import React from 'react';
+import './note-list-item.css'
 
 const NoteListItem = () => {
   return (

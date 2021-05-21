@@ -6,6 +6,8 @@ import NoteStatusFilter from '../note-status-filter/note-status-filter';
 import NoteList from '../note-list/note-list';
 import NoteAddForm from '../note-add-form/note-add-form';
 
+import './app.css';
+
 const App = () => {
   return (
     <div className="app">

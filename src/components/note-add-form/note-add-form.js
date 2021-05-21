@@ -1,4 +1,5 @@
 import React from 'react';
+import './note-add-form.css'
 
 const NoteAddForm = () => {
   return (

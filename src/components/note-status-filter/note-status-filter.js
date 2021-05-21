@@ -1,4 +1,5 @@
 import React from 'react';
+import './note-status-filter.css'
 
 const NoteStatusFilter = () => {
   return (
