@@ -1,4 +1,5 @@
 import React from 'react';
+import './note-add-form.css';
 
 const NoteAddForm = () => {
   return (
@@ -13,7 +14,7 @@ const NoteAddForm = () => {
           Добавить
       </button>
     </form>
-  )
-}
+  );
+};
 
 export default NoteAddForm;

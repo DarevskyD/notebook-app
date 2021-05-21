@@ -1,4 +1,5 @@
 import React from 'react';
+import './note-status-filter.css';
 
 const NoteStatusFilter = () => {
   return (
@@ -6,7 +7,7 @@ const NoteStatusFilter = () => {
       <button></button>
       <button></button>
     </div>
-  )
-}
+  );
+};
 
 export default NoteStatusFilter;

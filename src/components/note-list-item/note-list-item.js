@@ -1,4 +1,5 @@
 import React from 'react';
+import './note-list-item.css';
 
 const NoteListItem = () => {
   return (
@@ -20,7 +21,7 @@ const NoteListItem = () => {
         <i className="fa fa-heart"></i>
       </div>
     </li>
-  )
-}
+  );
+};
 
 export default NoteListItem;
