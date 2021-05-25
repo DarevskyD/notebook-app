@@ -1,5 +1,9 @@
 import React from 'react';
+<<<<<<< HEAD
 import './note-list-item.css';
+=======
+import './note-list-item.css'
+>>>>>>> 1efa6f58a1ad4a5ab5988a7398fcd2134e506eb1
 
 const NoteListItem = () => {
   return (
