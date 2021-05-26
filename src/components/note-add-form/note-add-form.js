@@ -1,9 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
 import './note-add-form.css';
-=======
-import './note-add-form.css'
->>>>>>> 1efa6f58a1ad4a5ab5988a7398fcd2134e506eb1
 
 const NoteAddForm = () => {
   return (
