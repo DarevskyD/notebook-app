@@ -8,15 +8,23 @@ import NoteAddForm from '../note-add-form/note-add-form';
 import './app.css';
 
 const App = () => {
+  
+  const data = [
+    {label: 'Новая задача', important: true, id: 'd'},
+    {label: 'Сходить к врачу', important: true, id: 'a'},
+    {label: 'Сходить в магазин', important: false, id: 'b'},
+    {label: 'Купить что-нибудь!', important: false, id: 'c'}
+  ];
+
   return (
     <div className="app">
-        <AppHeader/>
+        <AppHeader />
         <div className="search-panel d-flex">
-          <SearchPanel/>
-          <NoteStatusFilter/>
+          <SearchPanel />
+          <NoteStatusFilter />
         </div> 
-        <NoteList/>
-        <NoteAddForm/>      
+        <NoteList notes={data}/>
+        <NoteAddForm />      
     </div>
   );
 };
