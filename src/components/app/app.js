@@ -6,6 +6,12 @@ import NoteList from '../note-list/note-list';
 import NoteAddForm from '../note-add-form/note-add-form';
 
 import './app.css';
+import styled from 'styled-components';
+
+const AppBlock = styled.div`
+  margin: 0 auto;
+  max-width: 800px;
+`;
 
 const App = () => {
   
@@ -17,7 +23,7 @@ const App = () => {
   ];
 
   return (
-    <div className="app">
+    <AppBlock>
         <AppHeader />
         <div className="search-panel d-flex">
           <SearchPanel />
@@ -25,7 +31,7 @@ const App = () => {
         </div> 
         <NoteList notes={data}/>
         <NoteAddForm />      
-    </div>
+    </AppBlock>
   );
 };
 export default App;

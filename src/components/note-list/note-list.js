@@ -1,4 +1,5 @@
 import React from 'react';
+import {ListGroup} from 'reactstrap';
 import NoteListItem from '../note-list-item/note-list-item';
 import './note-list.css';
 
@@ -13,9 +14,9 @@ const NoteList = ({notes}) => {
   });
 
   return (
-    <ul className="app-list list-group">
+    <ListGroup className="app-list">
       {elements}
-    </ul>
+    </ListGroup>
   );
 };
 
