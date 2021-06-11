@@ -39,7 +39,8 @@ export default class NoteListItem extends Component {
     return (
       <div className={classNames}>
         <span className="app-list-item-lable"
-              onClick={this.onLike}>
+              onClick={this.onLike}
+              style={{cursor: 'pointer'}}>
           {label}
         </span>
         <div className="d-flex justify-content-center align-items-center">

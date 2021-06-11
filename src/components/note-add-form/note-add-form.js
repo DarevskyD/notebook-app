@@ -10,7 +10,7 @@ const NoteAddForm = () => {
         className="form-control new-post-label"/>
       <button 
         type="submit" 
-        className="btn-outline-secondary">
+        className="btn btn-outline-secondary">
           Добавить
       </button>
     </form>
