@@ -28,14 +28,16 @@ export default class App extends Component {
     super(props);
     this.state = {      
       data : [
-        {label: 'Новая задача', important: true, id: nextId()},
-        {label: 'Сходить к врачу', important: true, id: nextId()},
-        {label: 'Сходить в магазин', important: false, id: nextId()},
-        {label: 'Купить что-нибудь!', important: false, id: nextId()}
+        {label: 'Новая задача', important: true, like: false, id: nextId()},
+        {label: 'Сходить к врачу', important: false, like: false, id: nextId()},
+        {label: 'Сходить в магазин', important: false, like: false, id: nextId()},
+        {label: 'Купить что-нибудь!', important: false, like: false, id: nextId()}
       ]
     };
     this.deleteItem = this.deleteItem.bind(this);
     this.addItem = this.addItem.bind(this);
+    this.onToggleImportant = this.onToggleImportant.bind(this);
+    this.onToggleLiked = this.onToggleLiked.bind(this);
   }
 
   deleteItem(id) {
@@ -61,18 +63,52 @@ export default class App extends Component {
       };
     });   
   }
+
+  onToggleImportant(id) {
+    this.setState(({data}) => {
+      return{
+        data: data.map((item) => {
+          if(item.id === id) {
+            item.important = !item.important;
+          }
+          return item;
+        })
+      };
+    });
+  }
+
+  onToggleLiked(id) {
+    this.setState(({data}) => {
+      return{
+        data: data.map((item) => {
+          if(item.id === id) {
+            item.like = !item.like;
+          }
+          return item;
+        })
+      };
+    });
+  }
   
   render() {
-    return (
+    const {data} = this.state;
+    const liked = data.filter((item) => item.like).length;
+    const allNotes = data.length;
+
+    return (      
       <AppBlock>
-          <AppHeader />
+          <AppHeader 
+          liked={liked}
+          allNotes={allNotes}/>
           <SearchBlock>
             <SearchPanel />
             <NoteStatusFilter />
           </SearchBlock> 
           <NoteList 
           notes={this.state.data}
-          onDeleteItem = {this.deleteItem}/>
+          onDeleteItem = {this.deleteItem}
+          onToggleImportant = {this.onToggleImportant}
+          onToggleLiked = {this.onToggleLiked}/>
           <NoteAddForm 
           onAdd = {this.addItem}/>      
       </AppBlock>

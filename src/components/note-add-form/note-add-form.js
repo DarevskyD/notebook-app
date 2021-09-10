@@ -1,19 +1,20 @@
 import React from 'react';
 import './note-add-form.css';
 
-const NoteAddForm = () => {
+const NoteAddForm = ({onAdd}) => {
   return (
-    <form className="bottom-panel d-flex">
+    <div className="bottom-panel d-flex">
       <input 
         type="text" 
         placeholder="Введите новую запись" 
         className="form-control new-post-label"/>
       <button 
         type="submit" 
-        className="btn btn-outline-secondary">
+        className="btn btn-outline-secondary"
+        onClick={() => onAdd('Hello')}>
           Добавить
       </button>
-    </form>
+    </div>
   );
 };
 

@@ -3,31 +3,9 @@ import './note-list-item.css';
 
 
 export default class NoteListItem extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      important: false,
-      like: false
-    };
-    this.onImportant= this.onImportant.bind(this);
-    this.onLike= this.onLike.bind(this);
-  }
-
-  onImportant() {
-    this.setState(({important}) => ({
-      important: !important
-    }));
-  }
-
-  onLike() {
-    this.setState(({like}) => ({
-      like: !like
-    }));
-  }
 
   render() {
-    const {label, onDeleteItem} = this.props;
-    const {important, like} = this.state;
+    const {label, onDeleteItem, onToggleImportant, onToggleLiked, important, like} = this.props;    
     let classNames = 'app-list-item d-flex justify-content-between';
     if(important) {
       classNames += ' important';
@@ -39,7 +17,7 @@ export default class NoteListItem extends Component {
     return (
       <div className={classNames}>
         <span className="app-list-item-lable"
-              onClick={this.onLike}
+              onClick={onToggleLiked}
               style={{cursor: 'pointer'}}>
           {label}
         </span>
@@ -47,7 +25,7 @@ export default class NoteListItem extends Component {
           <button 
           type="button" 
           className="btn-star btn-sm"
-          onClick={this.onImportant}>
+          onClick={onToggleImportant}>
             <i className="fa fa-star"></i>
           </button>
           <button 
