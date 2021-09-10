@@ -5,6 +5,7 @@ import NoteStatusFilter from '../note-status-filter/note-status-filter';
 import NoteList from '../note-list/note-list';
 import NoteAddForm from '../note-add-form/note-add-form';
 import styled from 'styled-components';
+import nextId, {setPrefix} from 'react-id-generator';
 
 const AppBlock = styled.div`
   margin: 0 auto;
@@ -21,21 +22,20 @@ const SearchBlock = styled.div`
   }
 `;
 
-export default class App extends Component {
+export default class App extends Component {  
   constructor (props) {
+    setPrefix('note-id-');
     super(props);
-    this.state = {
+    this.state = {      
       data : [
-        {label: 'Новая задача', important: true, id: 1},
-        {label: 'Сходить к врачу', important: true, id: 2},
-        {label: 'Сходить в магазин', important: false, id: 3},
-        {label: 'Купить что-нибудь!', important: false, id: 4}
+        {label: 'Новая задача', important: true, id: nextId()},
+        {label: 'Сходить к врачу', important: true, id: nextId()},
+        {label: 'Сходить в магазин', important: false, id: nextId()},
+        {label: 'Купить что-нибудь!', important: false, id: nextId()}
       ]
     };
     this.deleteItem = this.deleteItem.bind(this);
     this.addItem = this.addItem.bind(this);
-
-    this.maxId = 5;
   }
 
   deleteItem(id) {
@@ -51,7 +51,7 @@ export default class App extends Component {
     const newItem = {
       label: body,
       important: false,
-      id: this.maxId++
+      id: nextId()
     };
 
     this.setState(({data}) => {
