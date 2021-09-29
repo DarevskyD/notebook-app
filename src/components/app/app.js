@@ -27,17 +27,19 @@ export default class App extends Component {
     setPrefix('note-id-');
     super(props);
     this.state = {      
-      data : [
+      data: [
         {label: 'Новая задача', important: true, like: false, id: nextId()},
         {label: 'Сходить к врачу', important: false, like: false, id: nextId()},
         {label: 'Сходить в магазин', important: false, like: false, id: nextId()},
         {label: 'Купить что-нибудь!', important: false, like: false, id: nextId()}
-      ]
+      ],
+      term: ''
     };
     this.deleteItem = this.deleteItem.bind(this);
     this.addItem = this.addItem.bind(this);
     this.onToggleImportant = this.onToggleImportant.bind(this);
     this.onToggleLiked = this.onToggleLiked.bind(this);
+    this.onUpdateSearch = this.onUpdateSearch.bind(this);
   }
 
   deleteItem(id) {
@@ -89,11 +91,27 @@ export default class App extends Component {
       };
     });
   }
+
+  searchNote(items, term) {
+    if(term.length === 0) {
+      return items;      
+    }
+    return items.filter((item) => {
+      return item.label.toLowerCase().indexOf(term) > -1;
+    });
+  }
+
+  onUpdateSearch(term) {
+    this.setState({
+      term: term
+    });
+  }
   
   render() {
-    const {data} = this.state;
+    const {data, term} = this.state;
     const liked = data.filter((item) => item.like).length;
     const allNotes = data.length;
+    const visibleNotes = this.searchNote(data, term);
 
     return (      
       <AppBlock>
@@ -101,11 +119,12 @@ export default class App extends Component {
           liked={liked}
           allNotes={allNotes}/>
           <SearchBlock>
-            <SearchPanel />
+            <SearchPanel 
+            onUpdateSearch = {this.onUpdateSearch}/>
             <NoteStatusFilter />
           </SearchBlock> 
           <NoteList 
-          notes={this.state.data}
+          notes={visibleNotes}
           onDeleteItem = {this.deleteItem}
           onToggleImportant = {this.onToggleImportant}
           onToggleLiked = {this.onToggleLiked}/>
