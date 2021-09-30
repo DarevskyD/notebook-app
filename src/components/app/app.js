@@ -33,13 +33,15 @@ export default class App extends Component {
         {label: 'Сходить в магазин', important: false, like: false, id: nextId()},
         {label: 'Купить что-нибудь!', important: false, like: false, id: nextId()}
       ],
-      term: ''
+      term: '',
+      filter: 'all'
     };
     this.deleteItem = this.deleteItem.bind(this);
     this.addItem = this.addItem.bind(this);
     this.onToggleImportant = this.onToggleImportant.bind(this);
     this.onToggleLiked = this.onToggleLiked.bind(this);
     this.onUpdateSearch = this.onUpdateSearch.bind(this);
+    this.onFilterSelect = this.onFilterSelect.bind(this);
   }
 
   deleteItem(id) {
@@ -101,17 +103,31 @@ export default class App extends Component {
     });
   }
 
+  filterNote(items, filter) {
+    if(filter === 'like') {
+      return items.filter(item => item.like);
+    } else {
+      return items;
+    }
+  }
+
   onUpdateSearch(term) {
     this.setState({
       term: term
     });
   }
+
+  onFilterSelect(filter) {
+    this.setState({
+      filter: filter
+    });
+  }
   
   render() {
-    const {data, term} = this.state;
+    const {data, term, filter} = this.state;
     const liked = data.filter((item) => item.like).length;
     const allNotes = data.length;
-    const visibleNotes = this.searchNote(data, term);
+    const visibleNotes = this.filterNote(this.searchNote(data, term), filter);
 
     return (      
       <AppBlock>
@@ -121,7 +137,9 @@ export default class App extends Component {
           <SearchBlock>
             <SearchPanel 
             onUpdateSearch = {this.onUpdateSearch}/>
-            <NoteStatusFilter />
+            <NoteStatusFilter 
+            filter = {filter}
+            onFilterSelect = {this.onFilterSelect}/>
           </SearchBlock> 
           <NoteList 
           notes={visibleNotes}
