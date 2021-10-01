@@ -20,7 +20,7 @@ const AppHeader = ({liked,allNotes}) => {
   return (
     <Header>
       <h1>Dmitry Darevsky</h1>
-      <h2>{allNotes} записей, из них понравилось {liked}</h2>
+      <h2>{allNotes} notes, {liked} liked</h2>
     </Header>
   );
 };

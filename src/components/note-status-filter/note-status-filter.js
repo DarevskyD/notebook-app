@@ -5,8 +5,8 @@ export default class NoteStatusFilter extends Component {
   constructor(props) {
     super(props);
     this.battons = [
-      {name: 'all', label: 'Все'},
-      {name: 'like', label: 'Понравилось'}
+      {name: 'all', label: 'All'},
+      {name: 'like', label: 'Liked'}
     ];
   }
   render() {    

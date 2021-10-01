@@ -32,15 +32,15 @@ export default class NoteAddForm extends Component {
       onSubmit={this.onSubmit}>
         <input 
           type="text" 
-          placeholder="Введите новую запись" 
+          placeholder="Enter new note" 
           className="form-control new-post-label"
           onChange={this.onValueChange}
           value={this.state.text}/>
         <button 
           type="submit" 
-          className="btn btn-outline-secondary"
+          className="btn btn-outline-secondary add-post"
           >
-            Добавить
+            Add
         </button>
       </form>
     );

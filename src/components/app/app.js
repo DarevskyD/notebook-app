@@ -7,9 +7,11 @@ import NoteAddForm from '../note-add-form/note-add-form';
 import styled from 'styled-components';
 import nextId, {setPrefix} from 'react-id-generator';
 
-const AppBlock = styled.div`
-  margin: 0 auto;
-  max-width: 800px;
+const AppBlock = styled.div`  
+  min-width: 800px;
+  padding: 10px;
+  background-color:#cdecff;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 `;
 
 const SearchBlock = styled.div`
@@ -17,8 +19,7 @@ const SearchBlock = styled.div`
   margin: 1rem 0;
   .search-input {
     width: auto;
-    flex-grow: 1;
-    margin-right: 3px;
+    flex-grow: 1;    
   }
 `;
 
@@ -28,10 +29,10 @@ export default class App extends Component {
     super(props);
     this.state = {      
       data: [
-        {label: 'Новая задача', important: true, like: false, id: nextId()},
-        {label: 'Сходить к врачу', important: false, like: false, id: nextId()},
-        {label: 'Сходить в магазин', important: false, like: false, id: nextId()},
-        {label: 'Купить что-нибудь!', important: false, like: false, id: nextId()}
+        {label: 'Add new notes', important: false, like: true, id: nextId()},
+        {label: 'Сlick on the button all or liked', important: false, like: false, id: nextId()},
+        {label: 'Use search', important: true, like: false, id: nextId()},
+        {label: 'Сlick on a note to make her liked', important: false, like: true, id: nextId()}
       ],
       term: '',
       filter: 'all'
